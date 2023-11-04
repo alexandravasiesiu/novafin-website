@@ -1,5 +1,8 @@
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Link, useNavigate } from 'react-router-dom';
+import logo from '../assets/images/NovafinLogo.png';
+import { useState } from 'react';
 
 const meta = {
   title: '',
@@ -10,6 +13,10 @@ const meta = {
 };
 
 export default function Index() {
+  const navigation = useNavigate();
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <React.Fragment>
       <HelmetProvider>
@@ -29,18 +36,20 @@ export default function Index() {
           />
           <div className='relative px-4 xl:px-10'>
             <nav className='flex justify-between items-center py-8'>
-              <a
+              <Link
                 className='inline-block mr-auto text-lg font-semibold'
-                href='#'
+                to='/'
               >
                 <img
-                  src='images/NovafinLogo.png'
+                  src={logo}
                   alt=''
                   className='rounded shadow-md h-16'
                 />
-              </a>
+              </Link>
               <div className='lg:hidden ml-auto'>
-                <button className='navbar-burger flex items-center p-3 hover:bg-gray-50 rounded border border-blue-700'>
+                <button className='navbar-burger flex items-center p-3 hover:bg-gray-50 rounded border border-blue-700'
+                onClick={() => setMenuOpen(true)}
+                >
                   <svg
                     className='block h-4 w-4'
                     viewBox='0 0 20 20'
@@ -54,28 +63,28 @@ export default function Index() {
               <div className='hidden lg:flex w-auto lg:w-3/5 lg:pl-16 ml-auto justify-end'>
                 <ul className='flex items-center space-x-12'>
                   <li>
-                    <a
+                    <Link
                       className='font-medium text-lg border rounded p-2 border-blue-700 hover:bg-gray-100'
-                      href='#'
+                      to='#Despre_noi'
                     >
-                      Despre
-                    </a>
+                      Despre noi
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className='font-medium text-lg border rounded p-2 border-blue-700 hover:bg-gray-100'
-                      href='#'
+                      to='#Servicii'
                     >
                       Servicii
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       className='font-medium text-lg border rounded p-2 border-blue-700 hover:bg-gray-100'
-                      href='#'
+                      to='#Contact'
                     >
                       Contact
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -101,33 +110,34 @@ export default function Index() {
               </div>
               <div
                 className='flex flex-wrap mb-16 lg:mb-20'
-                contentEditable='false'
               >
-                <a
+                <Link
                   className='block w-full md:w-auto text-center mb-2 py-4 px-8 md:mr-4 text-sm text-white font-medium leading-normal rounded transition duration-200 bg-blue-700 hover:bg-gray-50 hover:text-gray-700 border border-blue-700'
-                  href='#'
+                  to='#Contact'
                 >
                   Contactează-ne ACUM!
-                </a>
+                </Link>
               </div>
             </div>
           </div>
-          <div className='hidden navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50'>
+          <div className={`${ menuOpen ? "" : "hidden" } navbar-menu fixed top-0 left-0 bottom-0 w-5/6 max-w-sm z-50`}>
             <div className='navbar-backdrop fixed inset-0 bg-gray-800 opacity-25' />
             <nav className='relative flex flex-col py-6 px-6 w-full h-full bg-white border-r overflow-y-auto'>
               <div className='flex items-center mb-8'>
-                <a
+                <Link
                   className='mr-auto text-lg font-semibold leading-none'
-                  href='#'
+                  to='/'
                 >
                   <img
                     className='h-7'
-                    src='zeus-assets/logo/logo-zeus-red.svg'
+                    src={logo}
                     alt=''
                     width='auto'
                   />
-                </a>
-                <button className='navbar-close'>
+                </Link>
+                <button className='navbar-close'
+                 onClick={() => setMenuOpen(false)}
+                >
                   <svg
                     className='h-6 w-6 text-gray-500 cursor-pointer hover:text-gray-500'
                     xmlns='http://www.w3.org/2000/svg'
@@ -147,62 +157,46 @@ export default function Index() {
               <div>
                 <ul>
                   <li className='mb-1'>
-                    <a
+                    <Link
                       className='block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded'
-                      href='#'
+                      to='#Despre_noi'
                     >
-                      About
-                    </a>
+                      Despre noi
+                    </Link>
                   </li>
                   <li className='mb-1'>
-                    <a
+                    <Link
                       className='block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded'
-                      href='#'
+                      to='#Servicii'
                     >
-                      Company
-                    </a>
+                      Servicii
+                    </Link>
                   </li>
                   <li className='mb-1'>
-                    <a
+                    <Link
                       className='block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded'
-                      href='#'
+                      to='#Contact'
                     >
-                      Services
-                    </a>
-                  </li>
-                  <li className='mb-1'>
-                    <a
-                      className='block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded'
-                      href='#'
-                    >
-                      Testimonials
-                    </a>
+                      Contact
+                    </Link>
                   </li>
                 </ul>
               </div>
               <div className='mt-auto'>
-                <div className='pt-6'>
-                  <a
-                    className='block py-3 text-center text-sm leading-normal bg-red-50 hover:bg-red-100 text-red-300 font-semibold rounded transition duration-200'
-                    href='#'
-                  >
-                    Contact Us
-                  </a>
-                </div>
                 <p className='mt-6 mb-4 text-sm text-center text-gray-500'>
-                  <span>© 2021 All rights reserved.</span>
+                  <span>© 2023 Novafin. Toate drepturile rezervate.</span>
                 </p>
               </div>
             </nav>
           </div>
         </section>
-        <section className='bg-gray-100'>
+        <section id="Despre_noi" className='bg-gray-100'>
           <div className='container px-4 flex mx-auto py-20'>
             <div className='mx-auto'>
               <h2 className='mb-10 text-3xl font-semibold text-red-400'>
                 Despre noi:
               </h2>
-              <p className='mb-6 text-xl text-gray-500' contentEditable='false'>
+              <p className='mb-6 text-xl text-gray-500' >
                 La Novafin, suntem specializați în furnizarea și instalarea
                 finisajelor de cea mai înaltă calitate în România. Cu experiență
                 vastă și o echipă dedicată de profesioniști, ne concentrăm pe
@@ -227,13 +221,13 @@ export default function Index() {
                 într-o reușită estetică și funcțională. Ne focusăm pe calitate,
                 fiabilitate și satisfacția clientului. Cu fiecare finisaj, ne
                 străduim să aducem valoare și stil în fiecare spațiu pe care îl
-                atingem. Alegeți [Numele Firmei] pentru finisaje de încredere și
+                atingem. Alegeți Novafin pentru finisaje de încredere și
                 pentru un spațiu care se remarcă prin eleganță și durabilitate.
               </p>
             </div>
           </div>
         </section>
-        <section className='relative pb-20 lg:py-20 bg-gray-50'>
+        <section id="Servicii" className='relative pb-20 lg:py-20 bg-gray-50'>
           <img
             className='lg:absolute lg:top-0 lg:left-0 h-full w-full lg:w-5/12 mb-12 lg:mb-0 object-cover'
             src='images/different-construction-tools-for-construction-on-r-2021-09-04-01-25-46-utc.jpg'
@@ -453,13 +447,13 @@ export default function Index() {
             </div>
           </div>
         </section>
-        <section className='py-20'>
+        <section id="Contact" className='py-20'>
           <div className='container px-4 mx-auto'>
             <div className='max-w-2xl mx-auto mb-12 lg:mb-20 text-center'>
               <h2 className='mt-8 mb-10 text-3xl lg:text-4xl font-semibold font-heading text-red-400'>
                 Contactează-ne și începem să construim împreună!
               </h2>
-              <p className='text-xl text-gray-500' contentEditable='false'>
+              <p className='text-xl text-gray-500' >
                 Echipa noastră entuziastă este aici pentru a asculta ideile tale
                 și pentru a crea împreună spațiul pe care îl meriți.
               </p>
@@ -469,10 +463,10 @@ export default function Index() {
                 <div className='py-12 h-full border text-center rounded-xl border-gray-500 bg-gray-100'>
                   <h3 className='mb-6 text-2xl text-gray-500'>Adresă</h3>
                   <p className='text-blue-700 font-semibold'>
-                    1686 Geraldine Lane
+                  Alba Iulia, Str. Tudor Vladimirescu,
                   </p>
                   <p className='text-blue-700 font-semibold'>
-                    New York, NY 10013
+                  Nr. 22C, județ Alba
                   </p>
                 </div>
               </div>
@@ -487,7 +481,7 @@ export default function Index() {
               <div className='w-full lg:w-1/3 px-4 lg:mb-0'>
                 <div className='py-12 h-full border text-center rounded-xl border-gray-500 bg-gray-100'>
                   <h3 className='mb-7 text-2xl text-gray-500'>Telefon</h3>
-                  <p className='text-blue-700 font-semibold'>+7-843-672-431</p>
+                  <p className='text-blue-700 font-semibold'>	0745 357 905</p>
                 </div>
               </div>
             </div>
@@ -498,42 +492,42 @@ export default function Index() {
             <div className='pb-6 lg:pb-10 border-b border-gray-100'>
               <div className='flex flex-wrap items-start justify-between'>
                 <div className='w-full lg:w-1/5 mb-6 lg:mb-0'>
-                  <a
+                  <Link
                     className='inline-block mb-5 text-gray-900 text-lg font-semibold'
-                    href='#'
+                    to='/'
                   >
                     <img
-                      src='images/NovafinLogo.png'
+                      src={logo}
                       alt=''
                       className='rounded shadow-md h-16'
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div className='w-full lg:w-auto'>
                   <ul className='flex flex-wrap space-x-4 lg:space-x-8 items-center text-sm'>
                     <li className='mb-2 md:mb-0'>
-                      <a
+                      <Link
                         className='text-sm font-medium text-white border rounded p-2'
-                        href='#'
+                        to='#Despre_noi'
                       >
-                        Despre
-                      </a>
+                        Despre noi
+                      </Link>
                     </li>
                     <li className='mb-2 md:mb-0'>
-                      <a
+                      <Link
                         className='text-sm font-medium text-white border rounded p-2'
-                        href='#'
+                        to='#Servicii'
                       >
                         Servicii
-                      </a>
+                      </Link>
                     </li>
                     <li className='mb-2 md:mb-0'>
-                      <a
+                      <Link
                         className='text-sm font-medium text-white border rounded p-2'
-                        href='#'
+                        to='#Contact'
                       >
                         Contact
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
