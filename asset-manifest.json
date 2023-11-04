@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.d20ec234.js",
+    "main.js": "/static/js/main.f2e53b8e.js",
+    "static/media/NovafinLogo.png": "/static/media/NovafinLogo.d1bf1c6d3d3d6c67a2ce.png",
     "index.html": "/index.html",
-    "main.d20ec234.js.map": "/static/js/main.d20ec234.js.map"
+    "main.f2e53b8e.js.map": "/static/js/main.f2e53b8e.js.map"
   },
   "entrypoints": [
-    "static/js/main.d20ec234.js"
+    "static/js/main.f2e53b8e.js"
   ]
 }
