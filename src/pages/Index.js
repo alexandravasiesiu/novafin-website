@@ -23,7 +23,7 @@ export default function Index() {
         <Helmet {...meta}></Helmet>
       </HelmetProvider>
       <>
-        <section className='relative overflow-y-hidden bg-gray-50 h-screen'>
+        <section className='relative overflow-y-hidden bg-gray-50'>
           <img
             className='hidden lg:block absolute top-0 left-0 w-2/5 h-full object-cover'
             src='images/construction-helmet-on-shelf-2022-12-15-20-25-57-utc.jpg'
